@@ -1,0 +1,101 @@
+@extends('layouts.app')
+@section('title', 'Tareas')
+
+@section('content')
+
+
+<div class="row">
+  <div class="col">
+      <h3 class="text-center">TAREAS</h3>
+  </div>
+</div>
+
+<div class="row">
+
+
+<div class="col"><h5>Tareas pendientes</h5></div>
+
+<div class="col-2">
+    <a class="btn btn-primary float-rigth" href="{{ url('tareas/create') }}"> 
+       Crear Tarea
+    </a>
+</div>
+
+      <table class="table">
+         <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Categoría</th>
+                <th scope="col">Hecho</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+              @foreach ($list_tar  as $tar)   
+                  <tr>
+                      <td>{{$tar->name}}</td>
+                      <td>{{$tar->date}}</td>
+                      <td>{{$tar->clasificacion}}</td>
+
+                      <!------INICIO CHEKCKXBOX/////////////////------------->
+                      <td>
+                          <form action="{{ url('tareas/' . $tar->id) }}" method="post">
+                          @csrf
+                          @method('PUT')            
+                                  <!--button style="background-color: transparent; border:none" type="submit" -->
+                                  <input type="checkbox" id="c" name="check" value="0" onchange="this.form.submit()">
+                                  <!--/button-->
+                          </form>
+                     </td>  
+                    <!------FIN CHEKCKXBOX/////////////////------------->
+                     
+                    <!------INICIO BOTONES EDITAR Y BORRAR/////////////////------------->
+                     <td>                        
+                         <form action="{{ route('tareas.destroy', [$tar->id]) }}" method="post">
+                               @csrf
+                               @method('DELETE')
+                              <a class="btn btn-success"  href="{{ route('tareas.edit', [$tar->id]) }}">
+                                  <i class="fa fa-pencil"><!--EDITAR-->
+                                  </i>
+                              </a>
+                                <!--------------------------------------------------------------------------------------------->
+                              <button class="btn btn-danger" >
+                                    <i class="fa fa-trash"> <!--BORRAR-->
+                                    </i>
+                              </button>
+                          </form>
+                      </td>
+                      <!----FIN BOTONES EDITAR Y BORRAR//////////////////////////------------->
+                </tr>
+                @endforeach
+         </tbody>
+
+       
+         
+  </table>
+
+
+<div class="row">
+    <h5>Tareas realizadas</h5>
+      <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($list_eco  as $eco)   
+        <tr>
+          <td>{{$eco->name}}</td>
+          <td>{{$eco->date}}</td>
+        </tr>
+      @endforeach
+
+    </tbody>
+  </table>
+</div>
+@endsection
+ 

@@ -1,0 +1,8 @@
+[2019-11-01 19:12:58.542] [renderer1] [error] Error: [File Watcher (chokidar)] Inotify limit reached (ENOSPC)
+[2019-11-01 19:12:58.587] [renderer1] [error] [File Watcher (chokidar)] Inotify limit reached (ENOSPC)
+[2019-11-01 19:52:49.029] [renderer1] [error] Data tree node not found: [object Object]: Error: Data tree node not found: [object Object]
+    at X.getDataNode (file:///usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:1024:594)
+    at X.reveal (file:///usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:1024:184)
+    at e.<anonymous> (file:///usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:5660:1008)
+    at Generator.next (<anonymous>)
+    at r (file:///usr/share/code/resources/app/out/vs/workbench/workbench.desktop.main.js:35:399)
